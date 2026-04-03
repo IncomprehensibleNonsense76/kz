@@ -9,7 +9,7 @@ RUN dpkg --add-architecture i386 && \
     apt-get install -y --no-install-recommends \
         wine wine32 curl unzip ca-certificates \
         build-essential texinfo libgmp-dev libmpfr-dev libmpc-dev \
-        git wget gnupg2 && \
+        libjansson-dev git wget gnupg2 && \
     rm -rf /var/lib/apt/lists/*
 
 # ── Wine init ─────────────────────────────────────────────────
