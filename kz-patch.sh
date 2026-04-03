@@ -13,7 +13,7 @@
 set -euo pipefail
 
 IMAGE_NAME="kz-builder"
-GHCR_IMAGE="ghcr.io/incomprehensiblenonsense76/kz-builder:latest"
+GHCR_IMAGE="ghcr.io/incomprehensiblenonsense76/kz-builder:latest"  # must be lowercase
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 MODE=""
 BUILD_TYPE=""
