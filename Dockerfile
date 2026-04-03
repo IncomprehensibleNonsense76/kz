@@ -40,6 +40,7 @@ ENV PATH="/opt/n64/bin:$PATH"
 # ── gzinject (native, for WAD patching in build+patch mode) ───
 RUN git clone https://github.com/krimtonz/gzinject.git /tmp/gzinject && \
     cd /tmp/gzinject && \
+    ./configure && \
     make && \
     cp gzinject /opt/n64/bin/ && \
     rm -rf /tmp/gzinject
