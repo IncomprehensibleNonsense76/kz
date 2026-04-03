@@ -46,12 +46,16 @@ RUN git clone https://github.com/krimtonz/gzinject.git /tmp/gzinject && \
     rm -rf /tmp/gzinject
 
 # ── devkitPro PPC (for homeboy / VC patches) ──────────────────
-RUN wget -q https://apt.devkitpro.org/install-devkitpro-pacman -O /tmp/install-dkp && \
-    chmod +x /tmp/install-dkp && \
-    /tmp/install-dkp && \
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends apt-transport-https && \
+    wget -q https://apt.devkitpro.org/devkitpro-pub.gpg -O /usr/share/keyrings/devkitpro-pub.gpg && \
+    echo "deb [signed-by=/usr/share/keyrings/devkitpro-pub.gpg] https://apt.devkitpro.org stable main" \
+        > /etc/apt/sources.list.d/devkitpro.list && \
+    apt-get update && \
+    apt-get install -y devkitpro-pacman && \
     dkp-pacman -Syu --noconfirm && \
     dkp-pacman -S --noconfirm devkitPPC && \
-    rm /tmp/install-dkp
+    rm -rf /var/lib/apt/lists/*
 
 ENV DEVKITPRO=/opt/devkitpro
 ENV DEVKITPPC=/opt/devkitpro/devkitPPC
